@@ -15,18 +15,12 @@ export class RoleGuard implements CanActivate{
             return true
         }
 
-        if(request?.user){
+      
            
 
-            const {id}=request.user
-           
-            const user= await this.userService.findUserById(id)
             
-            return requiredRole===user.role
-        }
+            
+            return requiredRole===request.user.role
         
-    
-       
-        return false;
     }
 } 
