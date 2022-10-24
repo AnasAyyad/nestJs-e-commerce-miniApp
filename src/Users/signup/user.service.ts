@@ -2,8 +2,8 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Users } from 'src/Entites/users.entity';
 import { hashingPassword } from 'src/Utilites/bcrypt/bcrypt';
-import { Role } from 'src/Utilites/types/role.enum';
-import { createUserParam } from 'src/Utilites/types/types';
+import { Role } from 'src/Utilites/utils/role.enum';
+import { createUserParam } from 'src/Utilites/utils/types';
 import { Repository } from 'typeorm';
 
 @Injectable()

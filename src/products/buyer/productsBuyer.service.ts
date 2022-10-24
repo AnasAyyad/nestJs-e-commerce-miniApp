@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ProductHistory } from 'src/Entites/productHistory.entity';
 import { Products } from 'src/Entites/products.entity';
 import { UserService } from 'src/Users/signup/user.service';
-import { boughtProductParam } from 'src/Utilites/types/types';
+import { boughtProductParam } from 'src/Utilites/utils/types';
 import {  Repository } from 'typeorm';
 
 @Injectable()
@@ -43,7 +43,7 @@ export class ProductsBuyerService {
     }
 
     // Product history
-    async getProductsHistory(id:number){
+    async showProductsHistory(id:number){
         const userId = await this.userService.findUserById(id)
         console.log("service");
         

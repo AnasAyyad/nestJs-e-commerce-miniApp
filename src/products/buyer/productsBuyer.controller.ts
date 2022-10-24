@@ -1,7 +1,7 @@
-import { Controller, Get, Inject, Param, ParseIntPipe, Post,Body, Request } from '@nestjs/common';
+import { Controller, Get, Inject, Param, ParseIntPipe, Post,Body, Request} from '@nestjs/common';
 import { boughtProductDto } from 'src/Dto/boughtProduct.dto';
-import { Role } from 'src/Utilites/types/role.enum';
-import { Roles } from 'src/Utilites/types/roles.decorator';
+import { Auth } from 'src/Utilites/utils/Auth.decorator';
+import { Role } from 'src/Utilites/utils/role.enum';
 import { ProductsBuyerService } from './productsBuyer.service';
 
 @Controller('product')
@@ -22,18 +22,20 @@ export class ProductsBuyerController {
     }
 
     // buying products
-    @Roles(Role.BUYER)
+    
+    @Auth(Role.BUYER)
     @Post('buy')
      async buyProduct(@Request() req,@Body() boughtProductDto:boughtProductDto){
-
-        this.buyerService.buyingProduct(req.user.id,boughtProductDto)
+        
+        const{user,...details}=await this.buyerService.buyingProduct(req.user.id,boughtProductDto)
+       return details;
     }
 
     //Product history 
-    @Roles(Role.BUYER)
+    @Auth(Role.BUYER)
     @Get('history')
     async getProductHistory(@Request() req){   
-             return this.buyerService.getProductsHistory(req.user.id)
+             return this.buyerService.showProductsHistory(req.user.id)
     }
 
    

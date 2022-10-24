@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from 'src/Entites/categories.entity';
 import { Products } from 'src/Entites/products.entity';
 import { UserService } from 'src/Users/signup/user.service';
-import { addProductParam } from 'src/Utilites/types/types';
+import { addProductParam } from 'src/Utilites/utils/types';
 import { Repository } from 'typeorm';
 
 @Injectable()

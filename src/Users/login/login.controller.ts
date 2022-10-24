@@ -13,8 +13,8 @@ export class LoginController {
     @UseGuards(LocalAuth)
     @Post('login')
      async loginUser(@Request() req ){
- 
-            return {msg:'logged in successfully'}
+        
+            return this.loginService.login(req.user)
     }
     
 
