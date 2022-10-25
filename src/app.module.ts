@@ -15,7 +15,7 @@ import { ProductHistory } from './Entites/productHistory.entity';
     host:'localhost',
     port:3306,
     username:'root',
-    password:"##qlaANAS123450qlaANAS",
+    password:"**********",
     database:'e_commerce',
     entities:[Users,Category,Products,ProductHistory],
     synchronize:true
