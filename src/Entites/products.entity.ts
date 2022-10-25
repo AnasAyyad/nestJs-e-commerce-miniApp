@@ -1,4 +1,4 @@
-import { Column, Entity,  ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Category } from "./categories.entity";
 import { Users } from "./users.entity";
 
@@ -17,4 +17,8 @@ export class Products {
     category:Category;
     @ManyToOne(()=>Users,(user)=>user.products,{nullable:false})
     seller:Users;
+    @Column()
+    sellerId:number
+    @Column()
+    categoryName:string;
 }

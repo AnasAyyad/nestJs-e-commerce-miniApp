@@ -18,4 +18,7 @@ export class ProductHistory{
 
     @ManyToOne(()=>Users,(user)=>user.productHistory)
     user:Users
+
+    @Column()
+    userId:number;
 }

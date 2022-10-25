@@ -24,5 +24,6 @@ export class Users {
     productHistory:ProductHistory[];
 
     @OneToMany(()=>Products,(product)=>product.seller,{nullable:true,cascade:true})
+  
     products:Products[];
 }

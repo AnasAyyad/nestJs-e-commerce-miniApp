@@ -4,7 +4,7 @@ import { Auth } from 'src/Utilites/utils/Auth.decorator';
 import { Role } from 'src/Utilites/utils/role.enum';
 import { ProductsBuyerService } from './productsBuyer.service';
 
-@Controller('product')
+@Controller('products')
 export class ProductsBuyerController {
     constructor(@Inject('BUYER_SERVICE') private readonly buyerService:ProductsBuyerService){}
     
@@ -27,8 +27,7 @@ export class ProductsBuyerController {
     @Post('buy')
      async buyProduct(@Request() req,@Body() boughtProductDto:boughtProductDto){
         
-        const{user,...details}=await this.buyerService.buyingProduct(req.user.id,boughtProductDto)
-       return details;
+      return this.buyerService.buyingProduct(req.user.id,boughtProductDto)
     }
 
     //Product history 
@@ -38,6 +37,6 @@ export class ProductsBuyerController {
              return this.buyerService.showProductsHistory(req.user.id)
     }
 
-   
+  
     
 }

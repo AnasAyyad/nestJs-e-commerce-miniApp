@@ -36,7 +36,7 @@ export class ProductsBuyerService {
         if(!user){
             throw new HttpException('User Not Found!',HttpStatus.NOT_FOUND)
         }
-        const product= this.productHistoryRepository.create({...boughtProductParam,dateOfPurchase:new Date(),user})
+        const product= this.productHistoryRepository.create({...boughtProductParam,dateOfPurchase:new Date(),user,userId:user.id})
         
         return this.productHistoryRepository.save(product)
         
@@ -44,10 +44,12 @@ export class ProductsBuyerService {
 
     // Product history
     async showProductsHistory(id:number){
-        const userId = await this.userService.findUserById(id)
-        console.log("service");
         
-       return this.productHistoryRepository.find({where:{user:userId}})
+       const productHistory=await this.productHistoryRepository.find({where:{userId:id}})
+       if(productHistory.length===0){
+        throw new HttpException('Empty , Start Buying Products 😛',HttpStatus.NOT_FOUND)
+       }
+       return productHistory
     }
 
 }

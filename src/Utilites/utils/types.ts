@@ -30,6 +30,19 @@ export type addProductParam={
 }
 
 
+export type updateProductParam={
+   
+    name:string;
+
+    
+    price:number;
+
+  
+    description:string;
+
+   
+    categoryName:string;
+}
 
 export type boughtProductParam={
     
